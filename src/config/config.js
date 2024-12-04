@@ -9,6 +9,6 @@ export default {
   aws: {
     region: process.env.AWS_REGION,
     s3Bucket: process.env.S3_BUCKET,
-    dynamoDBTable: process.env.DYNAMODB_TABLE,
+    dynamoDBTable: process.env.TASK_TABLE,
   },
 }

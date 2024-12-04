@@ -1,0 +1,54 @@
+service: task-management-api
+
+frameworkVersion: '4'
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-east-1
+  environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+    TASK_TABLE: ${env:TASK_TABLE}
+    S3_BUCKET: ${env:S3_BUCKET}
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - s3:*
+          Resource:
+            - "arn:aws:s3:::${self:provider.environment.S3_BUCKET}/*"
+        - Effect: Allow
+          Action:
+            - dynamodb:*
+          Resource:
+            - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TASK_TABLE}"
+
+plugins:
+  - serverless-offline
+
+resources:
+  Resources:
+    TaskTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.TASK_TABLE}
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+    S3Bucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:provider.environment.S3_BUCKET}
+
+functions:
+  app:
+    handler: ./src/server.handler
+    events:
+      - httpApi:
+          path: /{proxy+}
+          method: any
