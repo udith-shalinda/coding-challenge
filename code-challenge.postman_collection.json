@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "7987608f-c98e-45c0-9804-deb6c2fe3ee7",
+		"name": "code-challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8221219",
+		"_collection_link": "https://grey-crater-377443.postman.co/workspace/Team-Workspace~b93776fe-4137-4b63-8f3a-e83db487a7eb/collection/8221219-7987608f-c98e-45c0-9804-deb6c2fe3ee7?action=share&source=collection_link&creator=8221219"
+	},
+	"item": [
+		{
+			"name": "create task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"this title five\",\r\n    \"description\": \"the description two\",\r\n    \"contentType\": \"image/jpeg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}api/tasks",
+					"host": [
+						"{{base_url}}api"
+					],
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload image",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "/Users/udithshalinda/Downloads/cf627d05-a84f-4d41-b3a5-ef12c4c196c2.JPG"
+					}
+				},
+				"url": {
+					"raw": "https://task-management-api-code-challenge.s3.amazonaws.com/tasks/2287c5f1-e85d-4760-8eb4-c493c0b8564d?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=300&Content-Type=image%2Fjpeg&X-Amz-Credential=ASIAT4GVR5EMH3S53EA4%2F20241205%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241205T083234Z&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEFkaCXVzLWVhc3QtMSJIMEYCIQDwXi6hRXdvZF4PMhEeHqzXbjAu17MuI%2FknvRtDInUbfAIhAIoPMf0kZ1hixqAuUhRpk%2BfaylVrkvwrzyRt%2BJqVfzKhKosDCBIQABoMMjY2NzM1ODM5NTEyIgyfTkf4FaVY%2B7bawc4q6AJn3QRRE14liPAgN9S0w6nmq7V6ZswWlzMabE8A%2Fq%2FgnzeSlVh1kLu6lYdTmcMAn9CAan78XcZFzs5rRorAerZdfMwfS0E1GZcqFbQShYvhhHKCmiDCqoJDBQg%2Fs5FxrclPDSvOp%2BVaSl5%2Fu%2FtKMr8MAvDyyhc6x5Uyqry1jJbg%2BD3T22VL1kjQQByd8Ot89FCMyFhtjGmy1%2Fo9cJKSRmFdO1Yp9Nvcb5IWEdxkWtMs2I%2BlLciUXO1azF%2FomK8gkqj%2BaU%2BnqdiOBpp%2B9SVvs5nXysmQQbFz8cuJCTXzkEhu4g4D%2BgJpT8pqeWwiu3f9aFKKKmb10Fa0HvOK0CpPiEhu4jc%2FQdM4Z2e6ASZgYiUOkobh2t11qUmFlIP%2F%2Bs2RdN%2FfR%2FYk85RGauOYCPcCKw50yEJAt%2Bf%2FCn61q4G1WYpwwf3Qjd6CDSo3Xp5f3kGJIUaXueYWLbskyuxj9oj3qpwdcKr8D0WbhqMwoMrFugY6nAHLSUNe7XUZGy5GP38hQMu2jkWitzPlrvmDxk%2FAVAAXxCPBAU1s%2B%2FR01v0Cp5Q%2B%2F0inovSJd3GAY58avYYaPnfxdG1ee1vOVWCvc2x9Cluq4eDG30BKdUKSCs0FIAytHCnF%2B%2FY6Y3fP1KPwFaMficc7N%2BwJjbl8tTL9EZlQFFvhmpcaM5K%2FN%2F279XV3%2FtVej%2FWlitKNFpSk%2BHsv5BI%3D&X-Amz-Signature=3a1491a6299d6820bc048098208ff70dd6b55755bb7c22c536729c64696e3256&X-Amz-SignedHeaders=host",
+					"protocol": "https",
+					"host": [
+						"task-management-api-code-challenge",
+						"s3",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"tasks",
+						"2287c5f1-e85d-4760-8eb4-c493c0b8564d"
+					],
+					"query": [
+						{
+							"key": "X-Amz-Algorithm",
+							"value": "AWS4-HMAC-SHA256"
+						},
+						{
+							"key": "X-Amz-Expires",
+							"value": "300"
+						},
+						{
+							"key": "Content-Type",
+							"value": "image%2Fjpeg"
+						},
+						{
+							"key": "X-Amz-Credential",
+							"value": "ASIAT4GVR5EMH3S53EA4%2F20241205%2Fus-east-1%2Fs3%2Faws4_request"
+						},
+						{
+							"key": "X-Amz-Date",
+							"value": "20241205T083234Z"
+						},
+						{
+							"key": "X-Amz-Security-Token",
+							"value": "IQoJb3JpZ2luX2VjEFkaCXVzLWVhc3QtMSJIMEYCIQDwXi6hRXdvZF4PMhEeHqzXbjAu17MuI%2FknvRtDInUbfAIhAIoPMf0kZ1hixqAuUhRpk%2BfaylVrkvwrzyRt%2BJqVfzKhKosDCBIQABoMMjY2NzM1ODM5NTEyIgyfTkf4FaVY%2B7bawc4q6AJn3QRRE14liPAgN9S0w6nmq7V6ZswWlzMabE8A%2Fq%2FgnzeSlVh1kLu6lYdTmcMAn9CAan78XcZFzs5rRorAerZdfMwfS0E1GZcqFbQShYvhhHKCmiDCqoJDBQg%2Fs5FxrclPDSvOp%2BVaSl5%2Fu%2FtKMr8MAvDyyhc6x5Uyqry1jJbg%2BD3T22VL1kjQQByd8Ot89FCMyFhtjGmy1%2Fo9cJKSRmFdO1Yp9Nvcb5IWEdxkWtMs2I%2BlLciUXO1azF%2FomK8gkqj%2BaU%2BnqdiOBpp%2B9SVvs5nXysmQQbFz8cuJCTXzkEhu4g4D%2BgJpT8pqeWwiu3f9aFKKKmb10Fa0HvOK0CpPiEhu4jc%2FQdM4Z2e6ASZgYiUOkobh2t11qUmFlIP%2F%2Bs2RdN%2FfR%2FYk85RGauOYCPcCKw50yEJAt%2Bf%2FCn61q4G1WYpwwf3Qjd6CDSo3Xp5f3kGJIUaXueYWLbskyuxj9oj3qpwdcKr8D0WbhqMwoMrFugY6nAHLSUNe7XUZGy5GP38hQMu2jkWitzPlrvmDxk%2FAVAAXxCPBAU1s%2B%2FR01v0Cp5Q%2B%2F0inovSJd3GAY58avYYaPnfxdG1ee1vOVWCvc2x9Cluq4eDG30BKdUKSCs0FIAytHCnF%2B%2FY6Y3fP1KPwFaMficc7N%2BwJjbl8tTL9EZlQFFvhmpcaM5K%2FN%2F279XV3%2FtVej%2FWlitKNFpSk%2BHsv5BI%3D"
+						},
+						{
+							"key": "X-Amz-Signature",
+							"value": "3a1491a6299d6820bc048098208ff70dd6b55755bb7c22c536729c64696e3256"
+						},
+						{
+							"key": "X-Amz-SignedHeaders",
+							"value": "host"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all tasks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}api/tasks/",
+					"host": [
+						"{{base_url}}api"
+					],
+					"path": [
+						"tasks",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}api/users/2",
+					"host": [
+						"{{base_url}}api"
+					],
+					"path": [
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get task by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}api/tasks/5a38658b-d752-4edf-8f00-076960a07b43",
+					"host": [
+						"{{base_url}}api"
+					],
+					"path": [
+						"tasks",
+						"5a38658b-d752-4edf-8f00-076960a07b43"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update task",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"this title updated\",\n    \"description\": \"the description two\",\n    \"contentType\": \"image/jpeg\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}api/tasks/5a38658b-d752-4edf-8f00-076960a07b43",
+					"host": [
+						"{{base_url}}api"
+					],
+					"path": [
+						"tasks",
+						"5a38658b-d752-4edf-8f00-076960a07b43"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update task Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"this title updated\",\n    \"description\": \"the description two\",\n    \"contentType\": \"image/jpeg\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}api/tasks/5a38658b-d752-4edf-8f00-076960a07b43",
+					"host": [
+						"{{base_url}}api"
+					],
+					"path": [
+						"tasks",
+						"5a38658b-d752-4edf-8f00-076960a07b43"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
