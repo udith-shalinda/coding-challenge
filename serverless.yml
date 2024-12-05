@@ -17,12 +17,12 @@ provider:
           Action:
             - s3:*
           Resource:
-            - "arn:aws:s3:::${self:provider.environment.S3_BUCKET}/*"
+            - 'arn:aws:s3:::${self:provider.environment.S3_BUCKET}/*'
         - Effect: Allow
           Action:
             - dynamodb:*
           Resource:
-            - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TASK_TABLE}"
+            - 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TASK_TABLE}'
 
 plugins:
   - serverless-offline
@@ -48,6 +48,7 @@ resources:
 functions:
   app:
     handler: ./src/server.handler
+    timeout: 30
     events:
       - httpApi:
           path: /{proxy+}

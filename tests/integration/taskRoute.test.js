@@ -1,5 +1,8 @@
 import request from 'supertest'
 import app from '../../src/app.js'
+import { createTask } from '../../src/services/taskServices.js'
+
+jest.mock('../../src/services/taskServices.js')
 
 describe('Task Routes', () => {
   afterEach(() => {
@@ -29,6 +32,8 @@ describe('Task Routes', () => {
       description: 'This is a valid description for the task.',
       contentType: 'image/png',
     }
+
+    createTask.mockResolvedValue(validData)
 
     const response = await request(app).post('/api/tasks').send(validData)
     expect(response.status).toBe(201)

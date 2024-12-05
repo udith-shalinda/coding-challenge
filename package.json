@@ -5,10 +5,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node src/server.js",
+    "start": "serverless offline -s dev --aws-profile personal",
     "test": "jest",
     "lint:fix": "eslint --fix",
-    "prepare": "husky"
+    "prepare": "husky",
+    "deploy": "serverless deploy -s dev --aws-profile personal"
   },
   "jest": {
     "transform": {
