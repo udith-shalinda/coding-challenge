@@ -3,12 +3,11 @@ import { CacheModel } from '../models/cacheModel.js'
 /**
  * Fetch user data from JSONPlaceholder and cache the result in DynamoDB.
  */
-export const fetchUsersFromAPI = async (id) => {
+export const fetchUserFromAPI = async (id) => {
   // Check if the data exists in cache and is still valid (TTL not expired)
   const cachedData = await CacheModel.get(id)
 
   if (cachedData && cachedData.ttl > Math.floor(Date.now() / 1000)) {
-    console.log('Cache hit: Returning cached user data')
     return cachedData.data
   }
 
@@ -25,6 +24,7 @@ export const fetchUsersFromAPI = async (id) => {
     id,
     data,
   })
+
   await newCacheData.save()
 
   return data
