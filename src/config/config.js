@@ -10,5 +10,6 @@ export default {
     region: process.env.AWS_REGION,
     s3Bucket: process.env.S3_BUCKET,
     taskTable: process.env.TASK_TABLE,
+    userCacheTable: process.env.USER_CACHE_TABLE,
   },
 }

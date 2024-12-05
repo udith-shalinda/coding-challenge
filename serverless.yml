@@ -9,6 +9,7 @@ provider:
   environment:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
     TASK_TABLE: ${env:TASK_TABLE}
+    USER_CACHE_TABLE: ${env:USER_CACHE_TABLE}
     S3_BUCKET: ${env:S3_BUCKET}
   iam:
     role:
@@ -23,6 +24,7 @@ provider:
             - dynamodb:*
           Resource:
             - 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TASK_TABLE}'
+            - 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.USER_CACHE_TABLE}'
 
 plugins:
   - serverless-offline
@@ -40,6 +42,7 @@ resources:
           - AttributeName: id
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST
+
     S3Bucket:
       Type: AWS::S3::Bucket
       Properties:
@@ -50,6 +53,23 @@ resources:
               AllowedMethods: ['GET', 'PUT']
               AllowedOrigins: ['*']
               MaxAge: 3000
+
+    UserCacheTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.USER_CACHE_TABLE}
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
+        TimeToLiveSpecification:
+          AttributeName: ttl
+          Enabled: true
 
 functions:
   app:

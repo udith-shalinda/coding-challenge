@@ -72,15 +72,16 @@ export const handleUpdateTask = async (req, res, next) => {
   try {
     const { id } = req.params
     const { contentType, ...updates } = req.body
+    let uploadUrl = undefined
 
     if (contentType) {
       const fileKey = `tasks/${id}`
       updates.fileUrl = `https://${config.aws.s3Bucket}.s3.${config.aws.region}.amazonaws.com/${fileKey}`
-      updates.uploadUrl = await generateUploadUrl(fileKey, contentType)
+      uploadUrl = await generateUploadUrl(fileKey, contentType)
     }
 
     const updatedTask = await updateTask(id, updates)
-    res.status(200).json({ data: updatedTask })
+    res.status(200).json({ data: { ...updatedTask, uploadUrl } })
   } catch (error) {
     next(error)
   }
