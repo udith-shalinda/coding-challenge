@@ -1,4 +1,5 @@
 import dynamoose from 'dynamoose'
+import config from '../config/config.js'
 
 // Configure DynamoDB for cloud (AWS environment)
 const ddb = new dynamoose.aws.ddb.DynamoDB()
@@ -38,4 +39,4 @@ const taskSchema = new dynamoose.Schema({
 })
 
 // Export Task Model
-export const TaskModel = dynamoose.model(process.env.TASK_TABLE, taskSchema)
+export const TaskModel = dynamoose.model(config.aws.taskTable, taskSchema)

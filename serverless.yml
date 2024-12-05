@@ -44,6 +44,12 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: ${self:provider.environment.S3_BUCKET}
+        CorsConfiguration:
+          CorsRules:
+            - AllowedHeaders: ['*']
+              AllowedMethods: ['GET', 'PUT']
+              AllowedOrigins: ['*']
+              MaxAge: 3000
 
 functions:
   app:
